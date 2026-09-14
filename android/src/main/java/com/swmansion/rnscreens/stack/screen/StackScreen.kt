@@ -14,6 +14,7 @@ import com.swmansion.rnscreens.core.utils.findFragmentOrNull
 import com.swmansion.rnscreens.react.common.ShadowStateProxy
 import com.swmansion.rnscreens.react.views.scrollviewmarker.ScrollViewMarker
 import com.swmansion.rnscreens.react.views.scrollviewmarker.ScrollViewSeeking
+import com.swmansion.rnscreens.stack.animation.model.StackAnimationDescriptor
 import com.swmansion.rnscreens.stack.header.config.OnHeaderConfigurationAttachListener
 import com.swmansion.rnscreens.stack.header.config.StackHeaderConfig
 import com.swmansion.rnscreens.stack.host.StackHost
@@ -52,6 +53,12 @@ internal class StackScreen(
     var activityMode: ActivityMode by Delegates.observable(ActivityMode.DETACHED) { _, oldValue, newValue ->
         if (oldValue != newValue) {
             stackHost.get()?.stackScreenChangedActivityMode(this)
+        }
+    }
+
+    override var animation: StackAnimationDescriptor by Delegates.observable(StackAnimationDescriptor.DEFAULT) { _, oldValue, newValue ->
+        if (oldValue != newValue) {
+            stackHost.get()?.stackScreenChangedAnimation(this)
         }
     }
 
