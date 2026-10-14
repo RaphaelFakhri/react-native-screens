@@ -14,8 +14,8 @@ import com.facebook.react.uimanager.ViewManagerDelegate
 import com.facebook.react.viewmanagers.RNSStackScreenManagerDelegate
 import com.facebook.react.viewmanagers.RNSStackScreenManagerInterface
 import com.swmansion.rnscreens.react.utils.makeEventRegistrationInfo
-import com.swmansion.rnscreens.stack.animation.StackAnimationMapper
 import com.swmansion.rnscreens.stack.animation.model.StackAnimationConfig
+import com.swmansion.rnscreens.stack.animation.parseStackAnimationConfig
 import com.swmansion.rnscreens.stack.header.config.StackHeaderConfig
 import com.swmansion.rnscreens.stack.screen.event.StackScreenDidAppearEvent
 import com.swmansion.rnscreens.stack.screen.event.StackScreenDidDisappearEvent
@@ -158,7 +158,7 @@ internal class StackScreenViewManager :
                 StackAnimationConfig.DEFAULT
             } else {
                 try {
-                    StackAnimationMapper.parse(value)
+                    parseStackAnimationConfig(value)
                 } catch (e: IllegalArgumentException) {
                     Log.w(TAG, "${e.message} Falling back to the default animation.")
                     StackAnimationConfig.DEFAULT
