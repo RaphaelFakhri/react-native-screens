@@ -14,7 +14,7 @@ import com.swmansion.rnscreens.core.utils.findFragmentOrNull
 import com.swmansion.rnscreens.react.common.ShadowStateProxy
 import com.swmansion.rnscreens.react.views.scrollviewmarker.ScrollViewMarker
 import com.swmansion.rnscreens.react.views.scrollviewmarker.ScrollViewSeeking
-import com.swmansion.rnscreens.stack.animation.model.StackAnimationDescriptor
+import com.swmansion.rnscreens.stack.animation.model.StackAnimationConfig
 import com.swmansion.rnscreens.stack.header.config.OnHeaderConfigurationAttachListener
 import com.swmansion.rnscreens.stack.header.config.StackHeaderConfig
 import com.swmansion.rnscreens.stack.host.StackHost
@@ -60,7 +60,7 @@ internal class StackScreen(
      * Read by the fragment whenever FragmentManager asks for one of its transitions, so a
      * change here takes effect at the next read without any notification.
      */
-    override var animation: StackAnimationDescriptor = StackAnimationDescriptor.DEFAULT
+    override var animation: StackAnimationConfig = StackAnimationConfig.DEFAULT
 
     var screenKey: String? = null
         set(value) {
