@@ -1,8 +1,7 @@
 #pragma once
 
-// The ContainedModal component family is iOS-only. The Android build compiles
-// every source in this directory, so the whole translation unit is guarded out
-// there - no codegen props/emitters exist for it on Android.
+// iOS-only family: the Android build compiles every source in this directory,
+// and no codegen props/emitters exist for it there.
 #if !defined(ANDROID)
 
 #include <jsi/jsi.h>
