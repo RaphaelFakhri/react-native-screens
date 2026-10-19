@@ -97,7 +97,6 @@ internal class StackScreenFragment(
         headerCoordinatorLayout = null
         item.onDismiss()
         teardownPreventNativeDismissCallback()
-        delegate.get()?.onFragmentDestroyed(this)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -114,9 +113,8 @@ internal class StackScreenFragment(
     internal val animationConfig: StackAnimationConfig
         get() = item.animation
 
-    // FragmentManager reads a fragment's transitions through these getters, once per operation
-    // it executes. Answering at read time means nothing is ever written ahead or kept in sync:
-    // the container knows which operation is executing, the screens know their configs.
+    // FragmentManager calls these once per operation it executes; the container answers, since only
+    // it knows which operation that is.
 
     override fun getEnterTransition(): Any? = resolveTransition(TransitionSlot.ENTER)
 
